@@ -87,5 +87,6 @@ async function montarGrafico() {
 document.addEventListener('DOMContentLoaded', () => {
   carregarTotalProdutos();
   carregarTotalClientes();
+  carregarValorTotal(); // <-- Só adicionar essa linha aqui!
   montarGrafico(); 
 });
