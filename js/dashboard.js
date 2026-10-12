@@ -15,6 +15,32 @@ async function carregarTotalProdutos() {
   }
 }
 
+// Função pra calcular a grana parada no estoque
+async function carregarValorTotal() {
+  try {
+    // Puxa só as colunas que importam pra não pesar
+    const { data, error } = await supabase.from('produtos').select('preco, estoque');
+    if (error) throw error;
+
+    let valorTotal = 0;
+    
+    // Multiplica o preço pelo estoque de cada item e soma tudo
+    data.forEach(item => {
+      const preco = parseFloat(item.preco) || 0;
+      const estoque = parseInt(item.estoque) || 0;
+      valorTotal += (preco * estoque);
+    });
+
+    // Formata pra Moeda Brasileira (R$)
+    const valorFormatado = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    document.getElementById('total-valor').innerText = valorFormatado;
+
+  } catch (erro) {
+    console.error("Deu ruim ao calcular valor:", erro.message);
+    document.getElementById('total-valor').innerText = 'Erro';
+  }
+}
+
 // Função pra contar o total de clientes
 async function carregarTotalClientes() {
   try {
