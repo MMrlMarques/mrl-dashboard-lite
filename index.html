@@ -7,33 +7,34 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+<body class="bg-black text-white min-h-screen flex flex-col selection:bg-red-600 selection:text-white">
 
-    <!-- Header Profissional -->
-    <header class="bg-slate-950/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
+    <!-- Header Preto e Vermelho com a tua Imagem -->
+    <header class="bg-black/90 backdrop-blur-md border-b border-red-900 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
-                <div class="bg-indigo-600 p-2 rounded-xl text-white shadow-lg shadow-indigo-500/30">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                </div>
+                
+                <!-- AQUI TÁ A MÁGICA COM O NOME GIGANTE DA IMAGEM -->
+                <img src="./Gemini_Generated_Image_fjw81xfjw81xfjw8.jpg" alt="Mrl Dashboard Logo" class="h-10 w-auto object-contain">
+                
                 <div>
                     <h1 class="text-lg font-bold tracking-tight text-white">Mrl Dashboard Lite</h1>
-                    <p class="text-xs text-slate-400">Painel de Visualização Executiva</p>
+                    <p class="text-xs text-neutral-400">Painel de Visualização Executiva</p>
                 </div>
             </div>
             
-            <!-- Aviso que é a versão leve -->
-            <div class="bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 flex items-center gap-2">
+            <!-- Indicador Vermelho Pulsante -->
+            <div class="bg-neutral-950 px-3 py-1.5 rounded-lg border border-neutral-800 flex items-center gap-2">
                 <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
                 </span>
-                <span class="text-xs text-slate-400 font-medium">Sincronizado ao Vivo</span>
+                <span class="text-xs text-neutral-400 font-medium">Sincronizado ao Vivo</span>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Conteúdo Principal -->
     <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full">
         
         <!-- SEÇÃO DASHBOARD -->
@@ -41,33 +42,33 @@
             <div class="flex justify-between items-center">
                 <div>
                     <h2 class="text-xl font-bold text-white">Visão Geral do Negócio</h2>
-                    <p class="text-xs text-slate-400">Indicadores puxados diretamente do banco Supabase.</p>
+                    <p class="text-xs text-neutral-400">Indicadores puxados diretamente do banco Supabase.</p>
                 </div>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 
-                <!-- Card: Total de Produtos -->
-                <div class="bg-slate-950 border border-slate-800 p-5 rounded-2xl shadow-sm relative overflow-hidden group hover:border-blue-500/50 transition-all">
+                <!-- Card 1: Total de Produtos -->
+                <div class="bg-neutral-950 border border-neutral-900 p-5 rounded-2xl shadow-sm relative overflow-hidden group hover:border-red-600/60 transition-all">
                     <div class="flex justify-between items-start">
                         <div>
-                            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Total de Produtos</p>
+                            <p class="text-xs font-medium text-neutral-400 uppercase tracking-wider">Total de Produtos</p>
                             <p id="total-produtos" class="text-2xl font-extrabold text-white mt-2">...</p>
                         </div>
-                        <div class="p-3 bg-blue-500/10 text-blue-400 rounded-xl group-hover:scale-110 transition-transform">
+                        <div class="p-3 bg-red-600/10 text-red-500 rounded-xl group-hover:scale-110 transition-transform">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card: Clientes no CRM -->
-                <div class="bg-slate-950 border border-slate-800 p-5 rounded-2xl shadow-sm relative overflow-hidden group hover:border-emerald-500/50 transition-all">
+                <!-- Card 2: Clientes no CRM -->
+                <div class="bg-neutral-950 border border-neutral-900 p-5 rounded-2xl shadow-sm relative overflow-hidden group hover:border-red-600/60 transition-all">
                     <div class="flex justify-between items-start">
                         <div>
-                            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Clientes no CRM</p>
-                            <p id="total-clientes" class="text-2xl font-extrabold text-emerald-400 mt-2">...</p>
+                            <p class="text-xs font-medium text-neutral-400 uppercase tracking-wider">Clientes no CRM</p>
+                            <p id="total-clientes" class="text-2xl font-extrabold text-white mt-2">...</p>
                         </div>
-                        <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-xl group-hover:scale-110 transition-transform">
+                        <div class="p-3 bg-white/10 text-white rounded-xl group-hover:scale-110 transition-transform">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                         </div>
                     </div>
@@ -78,7 +79,7 @@
 
     </main>
 
-    <!-- O JS não muda! Segue rodando liso puxando do Supabase -->
+    <!-- JS de integração com Supabase -->
     <script type="module" src="./js/dashboard.js"></script>
 </body>
 </html>
