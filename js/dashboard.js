@@ -1,10 +1,10 @@
 import { supabase } from './supabase.js';
 
-// Função pra buscar o total de produtos na tabela 'produtos'
+// Busca os produtos certinho (esse aqui a gente acertou!)
 async function carregarTotalProdutos() {
   try {
     const { count, error } = await supabase
-      .from('produtos') // Corrigido para 'produtos'
+      .from('produtos') 
       .select('*', { count: 'exact', head: true });
 
     if (error) throw error;
@@ -15,11 +15,11 @@ async function carregarTotalProdutos() {
   }
 }
 
-// Função pra buscar o total de clientes na tabela 'cliente'
+// Voltando a puxar os clientes no plural, que é como tava funcionando antes
 async function carregarTotalClientes() {
   try {
     const { count, error } = await supabase
-      .from('cliente') // Corrigido para 'cliente'
+      .from('clientes') // VOLTAMOS PRO PLURAL AQUI!
       .select('*', { count: 'exact', head: true });
 
     if (error) throw error;
@@ -30,7 +30,6 @@ async function carregarTotalClientes() {
   }
 }
 
-// Dispara o carregamento quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
   carregarTotalProdutos();
   carregarTotalClientes();
