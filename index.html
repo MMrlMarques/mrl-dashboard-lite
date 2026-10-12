@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Lite • Mrl Stock & CRM</title>
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col selection:bg-red-600 selection:text-white">
 
@@ -74,14 +75,17 @@
                         </div>
                     </div>
                 </div>
-<!-- Gráfico de Distribuição de Produtos -->
-<div class="bg-neutral-950 border border-neutral-900 rounded-2xl p-5 shadow-sm mt-6 group hover:border-red-600/60 transition-all">
-    <h3 class="font-bold text-white text-sm mb-4">Distribuição de Produtos por Categoria</h3>
-    <div class="relative w-full h-64">
-        <canvas id="stockChart"></canvas>
-    </div>
-</div>
+
+            </div> <!-- Fechando o grid aqui bonitinho -->
+
+            <!-- Gráfico de Distribuição de Produtos -->
+            <div class="bg-neutral-950 border border-neutral-900 rounded-2xl p-5 shadow-sm mt-6 group hover:border-red-600/60 transition-all">
+                <h3 class="font-bold text-white text-sm mb-4">Distribuição de Produtos por Categoria</h3>
+                <div class="relative w-full h-64">
+                    <canvas id="stockChart"></canvas>
+                </div>
             </div>
+
         </section>
 
     </main>
