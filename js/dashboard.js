@@ -1,6 +1,6 @@
 import { supabase } from './supabase.js';
 
-// Busca os produtos certinho (esse aqui a gente acertou!)
+// Função pra contar o total de produtos
 async function carregarTotalProdutos() {
   try {
     const { count, error } = await supabase
@@ -14,6 +14,22 @@ async function carregarTotalProdutos() {
     document.getElementById('total-produtos').innerText = 'Erro';
   }
 }
+
+// Função pra contar o total de clientes
+async function carregarTotalClientes() {
+  try {
+    const { count, error } = await supabase
+      .from('clientes') // Puxando do plural, como tava dando bom!
+      .select('*', { count: 'exact', head: true });
+
+    if (error) throw error;
+    document.getElementById('total-clientes').innerText = count !== null ? count : 0;
+  } catch (erro) {
+    console.error("Deu ruim ao puxar clientes:", erro.message);
+    document.getElementById('total-clientes').innerText = 'Erro';
+  }
+}
+
 // Função pra montar o gráfico bolado
 async function montarGrafico() {
   try {
@@ -21,11 +37,11 @@ async function montarGrafico() {
     const { data, error } = await supabase.from('produtos').select('*');
     if (error) throw error;
 
-    // Lógica pra agrupar. 
-    // Obs: Confere se a tua coluna lá no banco se chama 'categoria' mesmo. Se for diferente, altera aqui embaixo!
+    // Lógica pra agrupar os produtos por categoria. 
+    // Obs: Se lá no teu Supabase a coluna não chamar "categoria", troca aqui!
     const categorias = {};
     data.forEach(prod => {
-      const cat = prod.categoria || 'Sem Categoria'; // Se o campo no banco for diferente, troca o .categoria
+      const cat = prod.categoria || 'Sem Categoria'; 
       categorias[cat] = (categorias[cat] || 0) + 1; 
     });
 
@@ -33,7 +49,7 @@ async function montarGrafico() {
     
     // Taca o estilo dark com tons de vermelho
     new Chart(ctx, {
-      type: 'doughnut', // Fica brabo, mas se quiser barra troca pra 'bar'
+      type: 'doughnut', 
       data: {
         labels: Object.keys(categorias),
         datasets: [{
@@ -67,29 +83,9 @@ async function montarGrafico() {
   }
 }
 
-// Manda rodar tudo quando a página abrir
+// Manda rodar TUDO de uma vez quando a página abrir
 document.addEventListener('DOMContentLoaded', () => {
   carregarTotalProdutos();
   carregarTotalClientes();
-  montarGrafico(); // <-- Adiciona essa linha aqui pra ele renderizar o gráfico!
-});
-
-// Voltando a puxar os clientes no plural, que é como tava funcionando antes
-async function carregarTotalClientes() {
-  try {
-    const { count, error } = await supabase
-      .from('clientes') // VOLTAMOS PRO PLURAL AQUI!
-      .select('*', { count: 'exact', head: true });
-
-    if (error) throw error;
-    document.getElementById('total-clientes').innerText = count !== null ? count : 0;
-  } catch (erro) {
-    console.error("Deu ruim ao puxar clientes:", erro.message);
-    document.getElementById('total-clientes').innerText = 'Erro';
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  carregarTotalProdutos();
-  carregarTotalClientes();
+  montarGrafico(); 
 });
